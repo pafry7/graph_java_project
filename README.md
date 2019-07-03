@@ -1,1 +1,1 @@
-Niewielki program zaliczeniowy z przedmiotu Programowanie w języku Java przedstawiający prosty edytor grafów wykonany z pomocą biblioteki JUNG, Maven, JUnit i GITa. 
+Simple graph editor using Jung, Maven and JUnit based on http://www.grotto-networking.com/JUNG/JUNG2-Tutorial.pdf :)

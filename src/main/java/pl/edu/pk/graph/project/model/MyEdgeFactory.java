@@ -1,6 +1,6 @@
 package pl.edu.pk.graph.project.model;
 
-import org.apache.commons.collections4.Factory;
+import org.apache.commons.collections15.Factory;
 
 public class MyEdgeFactory implements Factory<MyEdge>{
 

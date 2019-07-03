@@ -12,6 +12,7 @@ import java.awt.*;
 import edu.uci.ics.jung.visualization.control.EditingModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import pl.edu.pk.graph.project.model.*;
+import pl.edu.pk.graph.project.controller.*;
 
 public class App
 {
@@ -30,6 +31,16 @@ public class App
         vv.setPreferredSize(new Dimension(350, 350));
 
         EditingModalGraphMouse gm = new EditingModalGraphMouse(vv.getRenderContext(),MyVertexFactory.getInstance(), MyEdgeFactory.getInstance());
+
+        PopupVertexEdgeMousePlugin myPlugin = new PopupVertexEdgeMousePlugin();
+        JPopupMenu edgeDel = new MyMouse.EdgeMenu(frame);
+        JPopupMenu vertexDel = new MyMouse.VertexMenu();
+        myPlugin.setEdgePopup(edgeDel);
+        myPlugin.setVertexPopup(vertexDel);
+
+
+        gm.remove(gm.getPopupEditingPlugin());
+        gm.add(myPlugin);
 
         vv.setGraphMouse(gm);
 

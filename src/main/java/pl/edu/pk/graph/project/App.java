@@ -11,6 +11,8 @@ import java.awt.*;
 
 import edu.uci.ics.jung.visualization.control.EditingModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
+import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
+import edu.uci.ics.jung.visualization.renderers.Renderer;
 import pl.edu.pk.graph.project.model.*;
 import pl.edu.pk.graph.project.controller.*;
 
@@ -30,6 +32,10 @@ public class App
         VisualizationViewer<MyVertex, MyEdge> vv = new VisualizationViewer<>(layout);
         vv.setPreferredSize(new Dimension(350, 350));
 
+        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+        vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
+        vv.getRenderer().getVertexLabelRenderer().setPosition(Renderer.VertexLabel.Position.CNTR);
+
         EditingModalGraphMouse gm = new EditingModalGraphMouse(vv.getRenderContext(),MyVertexFactory.getInstance(), MyEdgeFactory.getInstance());
 
         PopupVertexEdgeMousePlugin myPlugin = new PopupVertexEdgeMousePlugin();
@@ -37,7 +43,6 @@ public class App
         JPopupMenu vertexDel = new MyMouse.VertexMenu();
         myPlugin.setEdgePopup(edgeDel);
         myPlugin.setVertexPopup(vertexDel);
-
 
         gm.remove(gm.getPopupEditingPlugin());
         gm.add(myPlugin);
